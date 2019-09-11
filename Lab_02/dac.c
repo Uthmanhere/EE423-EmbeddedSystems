@@ -1,5 +1,6 @@
 #include "stm32f4xx.h"
-//#define __FPU_PRESENT  1
+#define __FPU_PRESENT  1
+#define ARM_MATH_CM4
 #include "arm_math.h"
 // configuration routines 
 
