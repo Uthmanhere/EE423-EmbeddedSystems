@@ -8,8 +8,7 @@ char * req_array[] = {"happy", "sad", "bored", "shocked"};
 void setup (void)
 {
   pinMode(SS, OUTPUT);
-//  for (int i=7; i>3; --i)
-//    pinMode(i, OUTPUT);
+
   pinMode(7, OUTPUT);
   pinMode(6, OUTPUT);
   pinMode(5, OUTPUT);
@@ -35,7 +34,6 @@ void loop(void)
     SPI.transfer('E');
     SPI.transfer(len);
     int em_count = 0;
-    Serial.println(emotion);
     while(emotion[em_count])
     {
       SPI.transfer(emotion[em_count]);
@@ -48,9 +46,6 @@ void loop(void)
 
 void display(uint8_t count)
 {
-  Serial.print("The count is");
-  Serial.print(count);
-  Serial.println();
 
   int n1, n2, n3, n4;
   if (count & 1) n1 = HIGH;
