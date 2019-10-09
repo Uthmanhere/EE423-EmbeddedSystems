@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #define N 10000  // vector size
 
 
