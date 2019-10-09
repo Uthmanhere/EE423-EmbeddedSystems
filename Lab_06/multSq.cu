@@ -40,22 +40,28 @@ int main()
 
 
         // copy data to device memory
-        cudaMemcpy((void *)dev_matA, (void *)matA, SIZE*SIZE*sizeof(int), cudaMemcpyHostToDevice);
-        cudaMemcpy((void *)dev_matB, (void *)matB, SIZE*SIZE*sizeof(int), cudaMemcpyHostToDevice);
+        cudaMemcpy((void *)dev_matA, (void *)matA, SIZE*SIZE*sizeof(int),
+                        cudaMemcpyHostToDevice);
+        cudaMemcpy((void *)dev_matB, (void *)matB, SIZE*SIZE*sizeof(int),
+                        cudaMemcpyHostToDevice);
 
         matMult<<<SIZE,SIZE>>>(dev_matProd, dev_matA, dev_matB);
-        if (cudaDeviceSynchronize() != cudaSuccess)  //check for successful thread execution
+        
+        // check for successful thread execution
+        if (cudaDeviceSynchronize() != cudaSuccess)
         {
                 printf("Error\n");
                 return -1;
         }
 
         // copy results from device to host memory
-        cudaMemcpy(matProd, dev_matProd, SIZE*SIZE*sizeof(int), cudaMemcpyDeviceToHost);
+        cudaMemcpy(matProd, dev_matProd, SIZE*SIZE*sizeof(int),
+                        cudaMemcpyDeviceToHost);
 
 
         for (int i=0; i<SIZE/2; ++i)  // inspecting first few diagnols
-                printf(" > Diagonal %d of prudect is %d.\n", i, matProd[i*SIZE+i]);
+                printf(" > Diagonal %d of prudect is %d.\n",
+                                i, matProd[i*SIZE+i]);
 
         return 0;
 }
