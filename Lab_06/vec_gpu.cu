@@ -1,19 +1,16 @@
-#include <stdio.h>
-#include <time.h>
+#define N 10000
 
-#define N 100000
-
-__global__ void add( int * a, int * b, int * c )
+__global__ void compute( float * a, float * b, float * c )
 {
         int tid = blockIdx.x;
         if (tid < N)
-                c[tid] = a[tid] + b[tid];
+                c[tid] = b[tid] / a[tid];
 }
 
 int main(void)
 {
-        int a[N], b[N], c[N];
-        int * dev_a, * dev_b, * dev_c;
+        float a[N], b[N], c[N];
+        float * dev_a, * dev_b, * dev_c;
 
         cudaMalloc((void **)&dev_a, N*sizeof(int));
         cudaMalloc((void **)&dev_b, N*sizeof(int));
@@ -21,22 +18,19 @@ int main(void)
 
         for (int i=0; i<N; i++)
         {
-                a[i] = -i;
-                b[i] = i * i;
+                a[i] = cos(i);
+                b[i] = sin(i);
         }
 
         cudaMemcpy(dev_a, a, N*sizeof(int), cudaMemcpyHostToDevice);
         cudaMemcpy(dev_b, b, N*sizeof(int), cudaMemcpyHostToDevice);
 
-        clock_t start = clock();
-        add<<<N,1>>>(dev_a, dev_b, dev_c);
-        clock_t duration = clock() - start;
+        compute<<<N,1>>>(dev_a, dev_b, dev_c);
 
         cudaMemcpy(c, dev_c, N*sizeof(int), cudaMemcpyDeviceToHost);
 
-        for (int i=0; i<N; i++)
-                printf(">> %d + %d = %d\n", a[i], b[i], c[i]);
-        printf("Duration: %ld\n", duration);
+        for (int i=0; i<10; i++)
+                printf(">> for i %d ocomputers %f.\n", i, c[i]);
 
         cudaFree(dev_a);
         cudaFree(dev_b);
