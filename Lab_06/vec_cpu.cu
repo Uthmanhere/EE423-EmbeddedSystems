@@ -1,30 +1,27 @@
-#include <stdio.h>
-#include <time.h>
+#define N 10000
 
-#define N 100000
-
-void add( int * a, int * b, int * c )
+void compute( float * a, float * b, float * c )
 {
         for (int i=0; i<N; i++)
-                c[i] = a[i] + b[i];
+                c[i] = b[i] / a[i];
 }
 
 int main(void)
 {
-        int a[N], b[N], c[N];
+        float a[N], b[N], c[N];
 
         for (int i=0; i<N; i++)
         {
-                a[i] = -i;
-                b[i] = i * i;
+                a[i] = cos(i);
+                b[i] = sin(i);
         }
 
-        clock_t start = clock();
-        add(a, b, c);
-        clock_t duration = clock() - start;
-        for (int i=0; i<N; i++)
-                printf(">> %d + %d = %d\n", a[i], b[i], c[i]);
-        printf("Duration: %ld\n", duration);
+        compute(a, b, c);
+
+        for (int i=0; i<10; i++)
+                printf(">> for i %d, computes %f.\n", i, c[i]);
+
+
 
         return 0;
 }
