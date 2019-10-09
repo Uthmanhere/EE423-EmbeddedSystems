@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #define N 10000  // vector size
 
 void compute( float * a, float * b, float * c )
