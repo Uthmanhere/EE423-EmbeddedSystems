@@ -25,13 +25,13 @@ int main(void)
         // initialize and allocate device pointers
         float * dev_a, * dev_b, * dev_c;
 
-        cudaMalloc((void **)&dev_a, N*sizeof(int));
-        cudaMalloc((void **)&dev_b, N*sizeof(int));
-        cudaMalloc((void **)&dev_c, N*sizeof(int));
+        cudaMalloc((void **)&dev_a, N*sizeof(float));
+        cudaMalloc((void **)&dev_b, N*sizeof(float));
+        cudaMalloc((void **)&dev_c, N*sizeof(float));
 
         // copy data to host memory
-        cudaMemcpy(dev_a, a, N*sizeof(int), cudaMemcpyHostToDevice);
-        cudaMemcpy(dev_b, b, N*sizeof(int), cudaMemcpyHostToDevice);
+        cudaMemcpy(dev_a, a, N*sizeof(float), cudaMemcpyHostToDevice);
+        cudaMemcpy(dev_b, b, N*sizeof(float), cudaMemcpyHostToDevice);
 
         // call kernel for N bloack, 1 thread each
         compute<<<N,1>>>(dev_a, dev_b, dev_c);
@@ -44,11 +44,11 @@ int main(void)
         }
 
         // copy results back to host memory
-        cudaMemcpy(c, dev_c, N*sizeof(int), cudaMemcpyDeviceToHost);
+        cudaMemcpy(c, dev_c, N*sizeof(float), cudaMemcpyDeviceToHost);
 
         // print a few results for observation
         for (int i=0; i<10; i++)
-                printf(">> for i %d ocomputers %f.\n", i, c[i]);
+                printf(">> for i %d ocomputes %f.\n", i, c[i]);
 
         // free device memory
         cudaFree(dev_a);
