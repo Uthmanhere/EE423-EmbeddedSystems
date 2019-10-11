@@ -7,9 +7,9 @@
 __global__ void compute( float * a, float * b, float * c )
 {
         // index by block ID
-        int tid = blockIdx.x;
-        if (tid < N)  // check if thread is valid
-                c[tid] = b[tid] / a[tid];  // compute tangent
+        int i = blockIdx.x;
+        if (i < N)  // check if thread is valid
+                c[i] = b[i] / a[i];  // compute tangent
 }
 
 int main(void)
