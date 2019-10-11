@@ -1,12 +1,7 @@
 #include <stdio.h>
 
 // kernel function
-__global__ void cuda_hello()
-{
-        // nothing prints as such functionalities
-        // are not provided by device
-        printf("Hello world from GPU\n");
-}
+__global__ void cuda_hello() {}
 
 int main()
 {
