@@ -86,7 +86,7 @@ void delay(uint32_t s)
 ```
 ### Flowchart
 A graphical representation of this code can be observed in figure.
-![Image of Flowchart](https://octodex.github.com/images/yaktocat.png)
+![Image of Flowchart](https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_0.png)
 ### Explanation
 * _Line 18_: Enable clock for GPIO port G in AHB1 Enable Register\footnote{Refer to section \texttt{6.3.12} of RM0090 reference manual for RCC AHB1 peripheral clock enable (RCC\_AHB1ENR) register mappings.}. Clock is not provided to all peripherals by default for enabling energy efficiency. Hence clock needs to be enabled for each module in use.
 * _Line 21 ,22_: Configure pins 13 \& 14 as general purpose output pins in GPIO Mode Enable Register.
