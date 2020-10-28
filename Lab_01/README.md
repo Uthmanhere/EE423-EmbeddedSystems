@@ -36,54 +36,9 @@ We choose IAR Embedded Workbench for development in these labs.
 
 # Lab Tasks
 ## Task A: The Toolchain
-Follow the IAR Embedded Workbench tutorial guide with this lab and program _blink.c_ in microcontroller. Familiarize yourself with the debugging environment and try to understand the code as well.
+Follow the IAR Embedded Workbench tutorial guide with this lab and program [blink.c](./blink.c) in microcontroller. Familiarize yourself with the debugging environment and try to understand the code as well.
 ### Code
-```C
-/* Blinking LED
- * ____________
- *     This program blinks on-board LEDs of STM32F429 Discovery Kit.
- *     The on-board LEDs are connected to pin 13 and pin 14 of
- *     GPIO port G
- */
-
-/* Includes */
-#include "stm32f4xx.h"
-
-/* Function prototypes */
-int main(void);
-void delay(uint32_t);
-
-int main(void)
-{
-        /* Enable clock for GPIOG */
-        RCC->AHB1ENR |= 1 << 6;
-
-        /* Set Pin 13 and Pin 14 in General Purpose Output Mode */
-        GPIOG->MODER &= 0x00000000;
-        GPIOG->MODER |= (0x01 << 2*14 | 0x01 << 2*13);
-        
-        /* Set Pin 13 and Pin 14 as pull-up pins */
-        GPIOG->PUPDR &= 0x00000000;
-        GPIOG->PUPDR |= (0x01 << 2*14 | 0x01 << 2*13);
-
-        /* Set Pin 13 high */
-        GPIOG->ODR |= (1 << 13);
-
-        while(1)
-        {
-                delay(10000000);
-                GPIOG->ODR ^= (1 << 13) | (1 << 14);  // Toggle LED
-        }
-
-}
-
-void delay(uint32_t s)
-{
-        for(s; s>0; s--){
-                asm(``NOP'');
-        }
-}
-```
+Refer to [blink.c](./blink.c) for code.
 ### Flowchart
 <img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_0.png" alt="flowchart" width="160"/>
 
@@ -94,3 +49,76 @@ void delay(uint32_t s)
 * _Line 29_: Set pin 13 high in Output Data Register.
 * _Line 33_: Delay routine is defined in \texttt{line 39} which loops over the argument doing nothing ass \emph{NOP} assembly primitive.
 * _Line 34_: Toggle LEDs using XOR operation.
+
+## Task B: Button Polling
+Program [button.c](./button.c) in microcontroller. Familiarize yourself with the debugging environment and try to understand the code as well.
+### Code
+Refer to file [button.c](./button.c) for code.
+### Flowchart
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_1.png" alt="flowchart" width="210"/>
+
+### Explanation
+* _Line 18_: Enable clock for GPIO port G and GPIO port A in AHB1 Enable Register.
+* _Line 46_: Check port A from Input Data Register if input is high at pin 0. Then toggle the LED; otherwise do not.
+
+## Task C: Button Interrupting
+Program [exti.c](./exti.c) in microcontroller. Familiarize yourself with the debugging environment and try to understand the code as well.
+### Code
+Refer to [exti.c](./exti.c) for code.
+### Flowchart for Main Routine
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_2.png" alt="flowchart" width="160"/>
+
+### Flowchart for Main Routine
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_2i.png" alt="flowchart" width="280"/>
+
+### Explanation
+* _Line 43_: Enable system configuration clock in RCC APB2 peripheral clock enable register\footnote{Refer to section \texttt{6.3.18} of RM0090 reference manual for RCC APB2 peripheral clock enable (RCC\_APB2ENR) register mappings.}.
+* _Line 46_: Select source input for external interrupt as pin 0 of GPIO port A in system configuration controller external interrupt configuration register\footnote{Refer to section \texttt{8.2.4} of RM0090 reference manual.}.
+* _Line 47_: Enable trigger type in Rising Trigger Selection Register\footnote{Refer to section \texttt{10.3.3} of RM0090 reference manual.}.
+* _Line 48_: Set interrupt mask register\footnote{Refer to section \texttt{10.3.1} of RM0090 reference manual.} for EXTI0.
+* _Line 51_: Set priority of interrupt request in Interrupt Priority Register\footnote{Refer to section \texttt{B3.4.9} of ARMv7-M Architecture Reference Manual}.
+    \item \texttt{Line 54}: Using interrupt set enable register\footnote{Refer to section \texttt{B3.4.4} of ARMv7-M Architecture Reference Manual} to enable EXI interrupt requests.
+_ _Line 18_: Check if interrupt is from pin A0 from interrupt pending register\footnote{Refer to section \texttt{10.3.6} of RM0090 reference manual.}.
+* _Line 19_: Clear interrupt in interrupt pending register.
+
+## Task D: Timer
+Program [tim2.c](./tim2.c) in microcontroller. Familiarize yourself with the debugging environment and try to understand the code as well.
+### Code
+Refer to [tim2.c](./tim2.c) for code.
+### State Diagram
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3iii.png" alt="flowchart" width="512"/>
+
+### Flowchart for Main Routine
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3.png" alt="flowchart" width="160"/>
+
+### Flowchart for External Interrup Routine
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3i.png" alt="flowchart" width="280"/>
+
+### Flowchart for Time Routine
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3ii.png" alt="flowchart" width="160"/>
+
+### Explanation
+* _Line 62_: Enable clock for timer 2 in RCC APB1 peripheral clock enable register\footnote{Refer to section \texttt{6.3.24} in RM0090 for RCC\_APB1ENR register mappings.}.
+* _Line 65 \& 66_: Calibrate timer 2 event update frequency using clock prescalar and autorelaod values. A generic formula in this regard being: $$TIMx\_EVT_f = \frac{CLK_{INT}}{(PSC+1)\times(ARR+1)}$$
+        * PLL clock \footnote{Refer to section \texttt{6.2} of RM0090 reference manual for a detailed discussion around clocks.} input frequency is configured in RCC PLL configuration register \footnote{Refer to section \texttt{6.3.2} of RM0090 reference manual RCC\_PLLCFGR register mappings.}. Which for default values of register formulates to $84 Mhz$.
+        * Since PLL generated clock is used as system clock, the default internal clock is $84 MHz$.
+        \item Timer 2 prescalar value\footnote{Refer to section \texttt{15.4.11} in RM0090 for TIMx\_PSC register mappings.} is 8399 hence the timer clock becomes `TIM2_CLK_f = CLK_INT / (PSC+1) = 84 M / (8399+1) = 10 kHz`
+        * Event is generated after overflow of reaching the value of Auto-Reload Register\footnote{Refer to section \texttt{15.4.12} in RM0090 for TIMx\_ARR register mappings.}. Setting it's value to 10,000, the frequency of event becomes:
+```     
+        TIM2_EVT_f = TIM2_f / (ARR+1) = 10000 / (10000+1) = 1 Hz
+```
+* _Line 69_: Updates interrupt enable after every iteration of interrupt generation in timer DMA/interrupt update enable register\footnote{Refer to section \texttt{15.4.4} in RM0090 for TIMx\_DIER register mappings.} (TIMx\_DIER).
+* _Line 72_: Enable timer 2 module in timer 2 control register 1\footnote{Refer to section \texttt{15.4.1} in RM0090 for TIMx\_CR1 register mappings.} (TIMx\_CR1);
+* _Line 19_: Clear timer 2 update interrupt flag (UIF) that interrupt should not trigger twice, exibiting false positives. The UIF bit is cleared in timer status register\footnote{Refer to section \texttt{15.4.5} in RM0090 for TIMx\_SR register mappings.} (TIMx\_SR).
+
+## Task E: Design Task - Digital Stopwatch
+Design a stopwatch representing time passed on seven segment display. The clock should initiate as button is pressed and return to 0 after 59 seconds. As button is pressed next time, the watch should stop. Subsequent button press will represent minutes passed. Next button press will result in reset of stopwatch and the one after it initiates it again.
+### State Diagram
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_4.png" alt="state" width="512"/>
+
+### Use Cases
+Some use cases are elaborated as follows:
+* (button pressed) 0, 1, 2, 3, 4, (button pressed) 4, (button pressed) 0, (button pressed) 0, (button pressed) 0, 1, 2, 3 ...
+* (button pressed) 0, 1, 2, 3, 4, 5, 6, 7, 8, ... 59, 0, 1, 2, 3, 4, 5, 6, 9,  ... 59, 0, 1, 2, 3, 4, (button pressed) 4, (button pressed) 2 (button pressed) 0, (button pressed) 1, 2, 3 ...
+* ... (8 minutes passed) 0, 1, (button pressed) 1, (button pressed) 8 ...
+* ... (87 minutes passed) 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, (button pressed) 16, (button pressed) 87, (button pressed) 0 ...
