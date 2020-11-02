@@ -2,7 +2,7 @@
 ## Analog-to-Digital Converter
 This section provides a theoretical know-how regarding Analog to Digital of STM32F429xx devices. The 12-bit ADC is a successive approximation analog-to-digital converter. It has up to 19 multiplexed channels allowing it to measure signals from 16 external sources, two internal sources, and the VBAT channel. The A/D conversion of the channels can be performed in single, continuous, scan or discontinuous mode. The result of the ADC is stored into a left or right-aligned 16-bit data register. The analog watchdog feature allows the application to detect if the input voltage goes beyond the user-defined, higher or lower thresholds.
 
-Please refer to section \ref{sec:adc_man} for a developer's introduction to ADC Peripheral. [Task C](#sec_design) provides a trivial implementation to get you started for design task in section \ref{sec:design}.
+Please refer to [ADC Manual](#adc_man) for a developer's introduction to ADC Peripheral. [Task B](#adc_task) provides a trivial implementation to get you started for design [Task C](#sec_design).
 ## Digital-to-Analog Converter
 This section provides a theoretical know-how regarding Digital to Analog Converter (DAC) of STM32F429xx devices. All the STM32F429xx devices contain two such DAC channels. Both of these channels are 12 bit buffered and convert a digital signal into an analog output with voltage signal ranging between 0 to 3 volts. Following are some of the features supported by these channels: 
 * Left or right data alignment in 12-bit mode
@@ -16,7 +16,7 @@ This section provides a theoretical know-how regarding Digital to Analog Convert
 
 Please refer to section \ref{sec:dac_man} for a developer's introduction to DAC Peripheral. Section \ref{sec:dac_task} provides a trivial implementation to get you started for design task in section \ref{sec:design}.
 
-# ADC Programmer's Manual
+# ADC Programmer's Manual <a name="adc_man"></a>
 ## Board Pin-Out
 In this lab we will be using channel0 of _ADC1_ through _PINA0_ of the board.
 ## Registers
@@ -75,7 +75,7 @@ Following are the steps that should be followed while configuring a DAC channel:
 * During the single conversion mode, enable and start the ADC within the _while(1)_ loop and stop it after getting the value.
 * If using the continuous conversion mode, enable and start the ADC once.
 
-# DAC Programmer's Manual
+# DAC Programmer's Manual <a name="dac_man"></a>
 ## Board Pin-Out
 The GPIO pins that are reserved for using DAC are PA4 or PA5. These pins need to be configured to 'analog' mode before using for DAC.
 ## Registers
@@ -136,11 +136,11 @@ Following are the steps that should be followed while configuring a DAC channel:
 * Reset the other bits.
 
 # Lab Tasks
-## Task A: Voltmeter using ADC
+## Task A: Voltmeter using ADC <a name="adc_task"></a>
 The code provided in [adc.c](./adc.c) is in accordance to the procedure explained in the section \ref{sec:adc_man}. Connect a potentiometer with the board using the power supply of the board itself. Read the output of potentionmeter from _PINA0_ using the [adc.c](./adc.c) code. View the value of variable _volt_value_ by right clicking on it and adding it to the live watch.
-## Task B: Sine Wave Generation using DAC
+## Task B: Sine Wave Generation using DAC <a name="dac_task"></a>
 The code provided [dac.c](./dac.c) is in accordance to the procedure explained in section \ref{sec:dac_man}. Copy this code in the IDE, build it and upload on the target device. Press Reset button once after uploading the code. Connect DAC pin to an oscilloscope and observe the results.
 ## Task C: Design Task <a name="sec_design"></a>
-Learning from manuals and examples in section \ref{sec:adc_man}, \ref{sec:dac_man} and \ref{sec:adc_task}, \ref{sec:dac_task}; implement a firmware which reads certain amount of samples from ADC and stores it in an array/buffer. Perform __moving average filtering__ on the acquired samples and show the output through DAC. Refer to the flowchart below for a better understanding of task in hand.
+Learning from manuals and examples in [ADC Manual](#adc_man), [DAC Manual](#dac_man)\ref{sec:dac_man} and [Task A](#adc_task), [Task B](#dac_task); implement a firmware which reads certain amount of samples from ADC and stores it in an array/buffer. Perform __moving average filtering__ on the acquired samples and show the output through DAC. Refer to the flowchart below for a better understanding of task in hand.
 
 <img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/task_flow.png" width="800"/>
