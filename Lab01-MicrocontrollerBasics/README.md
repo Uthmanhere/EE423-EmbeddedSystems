@@ -40,7 +40,7 @@ Follow the IAR Embedded Workbench tutorial guide with this lab and program [blin
 ### Code
 Refer to [blink.c](./blink.c) for code.
 ### Flowchart
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_0.png" alt="flowchart" width="160"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_0.png" alt="flowchart" width="160"/>
 
 ### Explanation
 * _Line 18_: Enable clock for GPIO port G in AHB1 Enable Register\footnote{Refer to section \texttt{6.3.12} of RM0090 reference manual for RCC AHB1 peripheral clock enable (RCC\_AHB1ENR) register mappings.}. Clock is not provided to all peripherals by default for enabling energy efficiency. Hence clock needs to be enabled for each module in use.
@@ -55,7 +55,7 @@ Program [button.c](./button.c) in microcontroller. Familiarize yourself with the
 ### Code
 Refer to file [button.c](./button.c) for code.
 ### Flowchart
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_1.png" alt="flowchart" width="210"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_1.png" alt="flowchart" width="210"/>
 
 ### Explanation
 * _Line 18_: Enable clock for GPIO port G and GPIO port A in AHB1 Enable Register.
@@ -66,10 +66,10 @@ Program [exti.c](./exti.c) in microcontroller. Familiarize yourself with the deb
 ### Code
 Refer to [exti.c](./exti.c) for code.
 ### Flowchart for Main Routine
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_2.png" alt="flowchart" width="160"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_2.png" alt="flowchart" width="160"/>
 
 ### Flowchart for Main Routine
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_2i.png" alt="flowchart" width="280"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_2i.png" alt="flowchart" width="280"/>
 
 ### Explanation
 * _Line 43_: Enable system configuration clock in RCC APB2 peripheral clock enable register\footnote{Refer to section \texttt{6.3.18} of RM0090 reference manual for RCC APB2 peripheral clock enable (RCC\_APB2ENR) register mappings.}.
@@ -86,16 +86,16 @@ Program [tim2.c](./tim2.c) in microcontroller. Familiarize yourself with the deb
 ### Code
 Refer to [tim2.c](./tim2.c) for code.
 ### State Diagram
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3iii.png" alt="flowchart" width="512"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_3iii.png" alt="flowchart" width="512"/>
 
 ### Flowchart for Main Routine
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3.png" alt="flowchart" width="160"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_3.png" alt="flowchart" width="160"/>
 
 ### Flowchart for External Interrup Routine
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3i.png" alt="flowchart" width="280"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_3i.png" alt="flowchart" width="280"/>
 
 ### Flowchart for Time Routine
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_3ii.png" alt="flowchart" width="160"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_3ii.png" alt="flowchart" width="160"/>
 
 ### Explanation
 * _Line 62_: Enable clock for timer 2 in RCC APB1 peripheral clock enable register\footnote{Refer to section \texttt{6.3.24} in RM0090 for RCC\_APB1ENR register mappings.}.
@@ -114,7 +114,7 @@ Refer to [tim2.c](./tim2.c) for code.
 ## Task E: Design Task - Digital Stopwatch
 Design a stopwatch representing time passed on seven segment display. The clock should initiate as button is pressed and return to 0 after 59 seconds. As button is pressed next time, the watch should stop. Subsequent button press will represent minutes passed. Next button press will result in reset of stopwatch and the one after it initiates it again.
 ### State Diagram
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_01/img/flow_4.png" alt="state" width="512"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab01-MicrocontrollerBasics/img/flow_4.png" alt="state" width="512"/>
 
 ### Use Cases
 Some use cases are elaborated as follows:
