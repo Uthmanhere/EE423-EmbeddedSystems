@@ -26,29 +26,29 @@ The STM32 has a complex clock distribution network which ensures that only those
 #### RCC AHB1 peripheral clock register _RCC\_AHB1ENR_
 This Register is used to control clock for various peripherals. Setting the LSB will enable the clock for GPIO port A.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/gpioa.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/gpioa.PNG" width="800"/>
 
 #### RCC APB2 peripheral clock enable register (_RCC\_APB2ENR_)
 ADC1 is driven by the APB2 clock. Setting bit 8 of the register will enable the clock for ADC1 .
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/GPIOA_ADC.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/GPIOA_ADC.PNG" width="800"/>
 
 ### GPIO port mode register (GPIOA\_MODER)}
 This register is used to specify the mode of the pin being used.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/port_mode.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/port_mode.PNG" width="800"/>
 
 Setting the bit 0 and 1 of the register will configure the PINA0 in analog mode. 
 ### ADC Registers
 #### ADC Control Register 1 ADC\_CR1
 This register is used for controlling various important features of the ADC. In this lab we will use bits 24 and 25 for setting the resolution of ADC. This register is also used to choose the channel of ADC.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/ADC_CR1.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/ADC_CR1.PNG" width="800"/>
 
 #### ADC Control Register 2 ADC\_CR2
 This register controls the main functionality of the ADC. Setting the LSB enables the ADC and setting bit 30 starts it. For continuous conversion mode we need to set bit 1 of the register.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/adc_cr2.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/adc_cr2.PNG" width="800"/>
 
 #### ADC Data Registers
 The data received as the input is converted and stored in a 16 bit data register(ADCX\_DR). This register is written every time EOC(end of conversion) flag is set.
@@ -85,24 +85,24 @@ The STM32 has a complex clock distribution network which ensures that only those
 #### RCC AHB1 peripheral clock register (RCC\_AHB1ENR)
 This Register is used to control clock for various peripherals. Setting the LSB will enable the clock for GPIO port A.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/gpioa.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/gpioa.PNG" width="800"/>
 
 #### RCC APB1 peripheral clock enable register (RCC\_APB1ENR)
 DAC is driven by the APB1 clock. Setting bit 29 of the register will enable the clock for DAC.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/DACEN.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/DACEN.PNG" width="800"/>
 
 ### GPIO port mode register (GPIOA\_MODER)
 This register is used to specify the mode of the pin being used.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/port_mode.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/port_mode.PNG" width="800"/>
 
 Setting the bit 8 and 9 of the register will configure the PINA4 in analog mode. 
 ### DAC Registers
 #### DAC Control Register DAC\_CR
 This register is used for controlling the functionality of DAC. It provides options to configure desired DAC channels with various features. 
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/daccr.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/daccr.PNG" width="800"/>
 
 #### DAC Data Registers
 The data is not written directly to the Data Output Register(DOR). The data is initially holded in a data holding register and is transferred to the DOR with next APB1 clock cycle. The choice of the register depends on the data format being used.
@@ -143,4 +143,4 @@ The code provided [dac.c](./dac.c) is in accordance to the procedure explained i
 ## Task C: Design Task <a name="sec_design"></a>
 Learning from manuals and examples in [ADC Manual](#adc_man), [DAC Manual](#dac_man)\ref{sec:dac_man} and [Task A](#adc_task), [Task B](#dac_task); implement a firmware which reads certain amount of samples from ADC and stores it in an array/buffer. Perform __moving average filtering__ on the acquired samples and show the output through DAC. Refer to the flowchart below for a better understanding of task in hand.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_02/img/task_flow.png" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab02-ADCnDAC/img/task_flow.png" width="800"/>

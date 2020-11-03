@@ -19,7 +19,7 @@ control of the AHB bus matrix to initiate AHB transactions. It can carry out the
 * memory-to-memory
 The DMA controller provides two AHB master ports: the AHB memory port, intended to be connected to memories and the AHB peripheral port, intended to be connected to peripherals. However, to allow memory-to-memory transfers, the AHB peripheral port must also have access to the memories. The AHB slave port is used to program the DMA controller (it supports only 32-bit accesses).
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/dma_block.PNG" width="600"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/dma_block.PNG" width="600"/>
 
 ## DMA Transactions
 A DMA transaction consists of a sequence of a given number of data transfers. The number
@@ -57,7 +57,7 @@ Both source and destination transfers can address peripherals and memories in th
 three possibilities: memory-to-peripheral, peripheral-to-memory or memory-to-memory
 transfers.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/sd_addr.PNG" width="600"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/sd_addr.PNG" width="600"/>
 
 When the data width (programmed in the PSIZE or MSIZE bits in the _DMA_SxCR_ register)
 is a half-word or a word, respectively, the peripheral or memory address written into the
@@ -91,7 +91,7 @@ transaction. This allows the software to process one memory area while the secon
 area is being filled/used by the DMA transfer. This mode of operation is known as __ping-pong__ mode. The double-buffer stream can work in both
 directions (the memory can be either the source or the destination).
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/sd_addr_db.PNG" widt="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/sd_addr_db.PNG" widt="800"/>
 
 ## Programmable Data Width
 The number of data items to be transferred has to be programmed into _DMA_SxNDTR_
@@ -105,7 +105,7 @@ will not be incomplete. This can occur when the data width of the peripheral por
 bits) is lower than the data width of the memory port (MSIZE bits). This constraint is
 summarized in the table below.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/p_width.PNG" width="600"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/p_width.PNG" width="600"/>
 
 ## Single and Burst Transfers
 The DMA controller can generate single transfers or incremental burst transfers of 4, 8 or 16
@@ -179,23 +179,23 @@ For each DMA stream, an interrupt can be produced on the following events:
 
 Separate interrupt enable control bits are available for flexibility as shown in the table below.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/dma_intr.PNG" width="600" />
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/dma_intr.PNG" width="600" />
 
 ## DMA Registers
 DMA uses the following registers (details in section 10.5 of reference manual) that are accessed by 32-bit words.
 - DMA low interrupt status register (DMA\_LISR)
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/dma_lisr.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/dma_lisr.PNG" width="800"/>
 
 - DMA high interrupt status register (DMA\_HISR)
 - DMA low interrupt flag clear register (DMA\_LIFCR): Writing 1 to a bit clears the corresponding flag in the DMA\_LISR register.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/dma_licfr.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/dma_licfr.PNG" width="800"/>
 
 -DMA high interrupt flag clear register (DMA\_HIFCR)
 - DMA stream x configuration register (DMA\_SxCR) (x = 0..7): This register is used to configure the concerned stream.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/reg.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/reg.PNG" width="800"/>
 
 - DMA stream x number of data register (DMA\_SxNDTR) (x = 0..7)
 - DMA stream x peripheral address register (DMA\_SxPAR) (x = 0..7)
@@ -203,7 +203,7 @@ DMA uses the following registers (details in section 10.5 of reference manual) t
 - DMA stream x memory 1 address register (DMA\_SxM1AR) (x = 0..7)
 - DMA stream x FIFO control register (DMA\_SxFCR) (x = 0..7)
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab_4/img/fifo.PNG" width="800"/>
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab04-DirectMemoryAccess/img/fifo.PNG" width="800"/>
 
 # Lab Tasks
 
