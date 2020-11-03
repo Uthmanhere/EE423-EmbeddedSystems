@@ -37,7 +37,7 @@ Mbed OS can be compiled in either of the two ways:
 -  Mbed Studio
 
 ## Inter-Integrated Circuit (I2C)
-I$^2$C was introduced by Philips Semiconductor (now NXP Semiconductors) in 1982. For details of protocols refer to it's  <a href=https://www.nxp.com/docs/en/user-guide/UM10204.pdf>official manual</a>.
+I2C was introduced by Philips Semiconductor (now NXP Semiconductors) in 1982. For details of protocols refer to it's  <a href=https://www.nxp.com/docs/en/user-guide/UM10204.pdf>official manual</a>.
 
 
 ### Characteristics
@@ -67,10 +67,10 @@ SPI was introduced by Motorola in 1990's. Refer to [manual](https://opencores.or
 ### Characteristics
 The SPI protocols is known for following characteristics:
 -  Four Wires
-    -  Master-Out-Slave-In - $MOSI$
-    -  Master-In-Slave-Out - $MISO$
-    -  Slave-Select - $\overline{SSg$
-    -  Serial Clock - $SCK$
+    -  Master-Out-Slave-In - MOSI
+    -  Master-In-Slave-Out - MISO
+    -  Slave-Select - SS
+    -  Serial Clock - SCK
 -  Full Dubplex communication.
 -  Multiple slaves are supported.
 ### Communication
@@ -117,7 +117,7 @@ An I2C (master) object is instantiated by specifying particular pins. Write func
 The [i2cSlaveAvr.cpp](./i2cSlaveAvr.cpp) for SPI slave is for Arduino UNO firmware.
 
 ## Task C
-Code application layer for communication with precoded Arduino UNO. The Arduino and STM32F429I Disc are communicating through SPI and I$^2$C protocols.
+Code application layer for communication with precoded Arduino UNO. The Arduino and STM32F429I Disc are communicating through SPI and I2C protocols.
 ### Pinout
 #### SPI
 SPI Pin | STM32F429I Disc | Arduino UNO
@@ -147,7 +147,7 @@ The precoded Arduino UNO shall be having following specifications you need to co
         -  Response type: E (emotion)
         -  Response lenght: 5
         -  Response emotion: Happy
-        -  Print: ``Arduino is feeling Happy right now.''
+        -  Print: "Arduino is feeling Happy right now."
 -  I2C Slave
     -  Raises an interrupt to respond over internal configurations assigned through this bus.
     -  Configuration Strings
