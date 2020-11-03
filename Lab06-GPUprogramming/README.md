@@ -11,7 +11,7 @@ In CUDA, kernel code is the one that runs on GPU. A kernel function is defined b
 ## Program Flow
 Sequential and parallel codes complement each other, prior begin synchronous and latter asynchronous in nature. Refer to figure \ref{fig:progFlow} for a visual understanding.
 
-<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab06-GPUprogramming/img/progFlow.png" width="600">
+<img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab06-GPUprogramming/img/progFlow.png" width="400">
 
 Swithcing in between host and device is through memory.
 - Host to Device: copy data in host memory to device memory.
@@ -141,5 +141,5 @@ The kernel call is a combination of threads and blocks. Blocks are responsible f
 Compile the code in [multSq.cu](./multSq.cu) and observe the output. Verify using MATLAB or any other tool possible.
 
 ### Task D-II
-Evolve the code snippet in [Square Matrix Multiplication](#sqMat) for rectangular matrix multiplication.
+Evolve the code snippet in [multSq.cu](./multSq.cu) for rectangular matrix multiplication.
 
