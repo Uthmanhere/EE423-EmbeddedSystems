@@ -63,7 +63,7 @@ An 8 bit frame that containing data with MSB-first principle.
 A low-to-high switch in SDA line before that in SCL.
 
 ## Serial Peripheral Interface (SPI)
-SPI was introduced by Motorola in 1990's. Refer to \href{https://opencores.org/usercontent/doc/1499360489g{manual}\footnote{https://opencores.org/usercontent/doc/1499360489} for complete details regarding the protocol.
+SPI was introduced by Motorola in 1990's. Refer to [manual](https://opencores.org/usercontent/doc/1499360489g{manual}\footnote{https://opencores.org/usercontent/doc/1499360489) for complete details regarding the protocol.
 ### Characteristics
 The SPI protocols is known for following characteristics:
 -  Four Wires
@@ -143,7 +143,7 @@ The precoded Arduino UNO shall be having following specifications you need to co
 -  SPI Master
     -  Constantly send Arduino UNO's state (bored, happy or sad.) Receive this response and print it on screen.
     -  Example
-		-  Response: E5Happy
+        -  Response: E5Happy
         -  Response type: E (emotion)
         -  Response lenght: 5
         -  Response emotion: Happy
@@ -151,9 +151,9 @@ The precoded Arduino UNO shall be having following specifications you need to co
 -  I2C Slave
     -  Raises an interrupt to respond over internal configurations assigned through this bus.
     -  Configuration Strings
-		-  CU: Count up (loop back to 0 after 9.)
-		-  CD: Count Down (loop back to 9 after 0.)
-		-  Rn: Set response emotion to number n where n ϵ {1,2,3,4}.
+        -  CU: Count up (loop back to 0 after 9.)
+        -  CD: Count Down (loop back to 9 after 0.)
+        -  Rn: Set response emotion to number n where n ϵ {1,2,3,4}.
 
 ### Application Layer Specifications
 The solution application should consist of three buttons (interrupt or polling), serial monitor and communications.
@@ -161,7 +161,6 @@ The solution application should consist of three buttons (interrupt or polling),
     -  Button up should configure Arduino's seven segment to count one up.
     -  Button down should configure Arduino's seven segment to count one down.
     -  Button response should alter the response configuration eventually iterating over all emotions for next time it is pressed.
-\end{itemizeg
 ### Arduino Code
 The firmware of arduino can be observed from the referred code snippet [avrApp.cpp](./avrApp.cpp).
 ### State Diagram
