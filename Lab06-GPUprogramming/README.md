@@ -49,7 +49,7 @@ GPU parallelism is exploited at two different layers. These layers along-with th
 
 <img src="https://github.com/Uthmanhere/EE423-EmbeddedSystems/blob/master/Lab06-GPUprogramming/img/gridBlock.png" width="800">
 
-## Thread Organization}
+## Thread Organization
 When kernels are launched in device, they are assigned to several threads. Organizing threads is the core of CUDA programming. The threads are divided among grids and block.
 ### Coordinates
 A thread is defined by using it's block ID and thread ID. Each of these coordinates is three-dimensional in nature. These IDs are defined within kernel by CUDA itself and can be accessed through structures as:
@@ -65,7 +65,7 @@ A thread is defined by using it's block ID and thread ID. Each of these coordina
 - blockDim: measured in threads.
 - gridDim: measured in blocks.
 ## Calling Kernel
-Kernels calls use three ankle brackets to define grid and dimension size. The following listing emphasizes the syntax for figure \ref{fig:gridBlock}:
+Kernels calls use three ankle brackets to define grid and dimension size. The following listing emphasizes the syntax for above figure.:
 ```C
 dim3 threadsPerBlock(4, 4); //equivalent to (4, 4, 1)
 dim3 numBlocks(2,4);        //equivalent to (2, 4, 1)
@@ -83,7 +83,7 @@ Indexing is the concept that helps programmer code a generic kernel for all the 
 
 # Lab Tasks
 ## Task A: The First Cuda Program <a name="task1"></a>
-### Syntax}
+### Syntax
 Cuda launches kernels in GPU. These kernels are defined by \_\_\_global\_\_\_ keyword. Sunch functions can only run on GPU. These are called in angle brackets _<<<x,y>>>_. Significance of this syntax will be explained later.
 ### Description
 The given routine [hello.cu](./hello.cu) is simple enough to elaborate what it does itself. But it does not print anything as this particular functionality is not available in kernels. It is just supposed to elaborate basic Cuda syntax.
@@ -95,7 +95,7 @@ GPU routines are often sensitive to GPU architectures. Such architectural detail
 ### Task
 Compile and run the [prop.cu](./prop.cu) and observe the number of GPUs and their specifications in your system.
 ## Task C: Parallelizing a Vector Computation
-### Vector Compute on CPU} <a name="vec_cpu"></a>
+### Vector Compute on CPU <a name="vec_cpu"></a>
 #### Description
 Given is a simple vector computation code executing in a sequential manner over a CPU.
 ### Vector Compute on GPU <a name="vec_gpu"></a>
