@@ -20,7 +20,7 @@ where S\_Block is the block size.
 #### Index Calculation
 Address index size is related to number of cache blocks. if $I$ bits represent offset, it can be calculated using equation:
 ```
-    $$I = log2 N_Block
+    I = log2 N_Block
 ```
 where N\_Block is the number of cache blocks.
 #### Tag Calculation
@@ -209,6 +209,7 @@ Assume the access pattern:
 Observe the thorough log of accesses in the following table and try to infer how hits and misses have been induced.
 _Hint: Observe tag bits_.
 Address | Tag | Index | Offset | Status
+------- | --- | ----- | ------ | ------
 0x00 | 0 | 0 | 0 | M
 0x10 | 0 | 1 | 0 | M
 0x20 | 0 | 2 | 8 | M
@@ -320,27 +321,30 @@ loop:
 Analyze the routine for it's pipelined execution in Ripes. Try to populate the following table with instruction number being executed and track the value of _t0_. Locate and identify hazards to answer the following questions:
 - Which hazards have been observed?
 - How has it been resolved?
-\# | IF | ID | EX | MEM | WB | t0 | Hazard 
-1 |||||||
-2 |||||||
-3 |||||||
-4 |||||||
-5 |||||||
-6 |||||||
-7 |||||||
-8 |||||||
-9 |||||||
-10 |||||||
-11 |||||||
-12 |||||||
-13 |||||||
-14 |||||||
-15 |||||||
-16 |||||||
-17 |||||||
-18 |||||||
-19 |||||||
-20 |||||||
+
+No. | IF | ID | EX | MEM | WB | t0 | Hazard
+--- | -- | -- | -- | --- | -- | -- | ------
+1 |  |  |  |  |  |  |
+2 |  |  |  |  |  |  |
+3 |  |  |  |  |  |  |
+4 |  |  |  |  |  |  |
+5 |  |  |  |  |  |  |
+6 |  |  |  |  |  |  |
+7 |  |  |  |  |  |  |
+8 |  |  |  |  |  |  |
+9 |  |  |  |  |  |  |
+10 |  |  |  |  |  |  |
+11 |  |  |  |  |  |  |
+12 |  |  |  |  |  |  |
+13 |  |  |  |  |  |  |
+14 |  |  |  |  |  |  |
+15 |  |  |  |  |  |  |
+16 |  |  |  |  |  |  |
+17 |  |  |  |  |  |  |
+18 |  |  |  |  |  |  |
+19 |  |  |  |  |  |  |
+20 |  |  |  |  |  |  |
+
 ## Task E: Routine II
 ### Routine
 ```
