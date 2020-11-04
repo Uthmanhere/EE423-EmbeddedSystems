@@ -284,7 +284,9 @@ We shall try to understand cache architecture and it's effects on hit \& miss ra
 ### Task
 #### Access Pattern <a name="tc_ap>"></a>
 Assume the following access pattern in hexadecimals.
-    $$Address = 0, 40, 2, 42, 4, 44, 6, 46, 8, 48, A, 4A, C, 4C, ...$$
+```
+    Address = 0, 40, 2, 42, 4, 44, 6, 46, 8, 48, A, 4A, C, 4C, ...
+```
 #### Access Log and Hit Rate <a name="tc_ana"></a>
 Compose an access log for misses and hits for each access and predict the hit rate for:
 - Directly mapped cache
