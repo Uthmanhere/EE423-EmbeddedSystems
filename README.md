@@ -1,6 +1,6 @@
 # EE423: Embedded Systems Design
 
-## Acknoledgement
+## Acknowledgement
 
 These labs were designed by Muhammad Usman under the supervision of Dr Rehan Ahmed and Dr Usman Zabit with a team of 5 students:
 - Syed Talal Ahmed
